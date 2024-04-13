@@ -1,0 +1,73 @@
+@model List<Purchase>
+@{
+    ViewData["Title"] = "Purchase";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+
+<link rel="stylesheet" href="~/css/Purchase.css">
+
+<form id="purchaseForm" method="post" action="Cart" onsubmit="return validateForm()">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <label for="prodottoId">Seleziona Prodotto:</label>
+    <select name="prodottoId" id="prodottoId" onchange="updateProductImage()">
+        @foreach (var prodotto in Model)
+        {
+            <option value="@prodotto.PurchaseId"
+                    nome-prodotto="@prodotto.prodotto" 
+                    data-quantita="@prodotto.quantita" 
+                    data-prezzo="@prodotto.prezzo" 
+                    data-immagine="@prodotto.Immagine">@prodotto.prodotto - Disponibile: @prodotto.quantita - Prezzo per singolo prodotto: @prodotto.prezzo</option>
+        }
+    </select>
+
+    <br />
+
+    <label for="quantitaDesiderata">Quantità desiderata:</label>
+    <input type="number" name="quantitaDesiderata" id="quantitaDesiderata" required/>
+
+    <br />
+
+    <label for="prezzoTotale">Prezzo Totale:</label>
+    <input type="text" name="prezzoTotale" id="prezzoTotale" readonly />
+
+    <br />
+
+    <label for="immagineProdotto">Immagine Prodotto:</label>
+    <img id="immagineProdotto" src="@Url.Content("~/img/" + Model[0].Immagine)" alt="Immagine Prodotto" style="max-width: 100px; max-height: 100px;" />
+
+    <br />
+
+    <input type="submit" value="Purchase" />
+</form>
+
+<script>
+    function validateForm() {
+        var quantitaDesiderata = parseInt(document.getElementById("quantitaDesiderata").value);
+        var disponibilita = parseInt(document.getElementById("prodottoId").selectedOptions[0].dataset.quantita);
+        var prezzoUnitario = parseFloat(document.getElementById("prodottoId").selectedOptions[0].dataset.prezzo);
+
+        if (quantitaDesiderata <= 0 || quantitaDesiderata > disponibilita) {
+            alert("Inserire una quantità valida.");
+            return false; // Impedisce l'invio del modulo
+        }
+
+        var prezzoTotale = quantitaDesiderata * prezzoUnitario;
+        document.getElementById("prezzoTotale").value = prezzoTotale.toFixed(2);
+
+        return true; // Invio del modulo
+    }
+
+    function updateProductImage() {
+        var selectedOption = document.getElementById("prodottoId").selectedOptions[0];
+        var immagineProdotto = selectedOption.getAttribute('data-immagine');
+        var imageElement = document.getElementById("immagineProdotto");
+        imageElement.src = "@Url.Content("~/img/")" + immagineProdotto;
+    }
+</script>
+
+
+
+

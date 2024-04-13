@@ -1,0 +1,54 @@
+@model Registrazione
+@{
+    ViewData["Title"] = "SignUp";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/SignUp.css">
+</head>
+<body>
+    <div class="container">
+        <h1>@ViewData["Title"]</h1>
+        
+        <form method="post" action="Riepilogo">
+            <label for="txtData">Data di Nascita (DD/MM/YYYY):</label>
+            <input type="date" id="txtData" name="Data" pattern="\d{2}/\d{2}/\d{4}" placeholder="DD/MM/YYYY" required />
+            
+            <label for="txtNome">Nome:</label>
+            <input type="text" id="txtNome" name="nome" required />
+            
+            <label for="txtCognome">Cognome:</label>
+            <input type="text" id="txtCognome" name="cognome" required />
+            
+            <label for="txtEmail">Email:</label>
+            <input type="email" id="txtEmail" name="email" required />
+            
+            <label for="txtPassword">Password:</label>
+            <input type="text" id="txtPassword" name="password" required />
+
+            <label>Sesso:</label>
+            <input type="radio" id="radioMale" name="sesso" value="M" required />
+            <label for="radioMale">Maschio</label>
+            <input type="radio" id="radioFemale" name="sesso" value="F" required />
+            <label for="radioFemale">Femmina</label>
+            <input type="radio" id="radioNonBinary" name="sesso" value="Non Binario" required />
+            <label for="radioNonBinary">Non Binario</label>
+            
+            <label for="ddlRuolo">Ruolo:</label>
+            <select id="ddlRuolo" name="ruolo" required>
+                <option value="Studente">Studente</option>
+                <option value="Docente">Docente</option>
+                <option value="Altro">Altro</option>
+            </select>
+            
+            <input type="submit" value="Registrati" />
+        </form>
+    </div>
+
+</body>
+</html>
+
+

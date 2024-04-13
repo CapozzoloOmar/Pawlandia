@@ -1,0 +1,23 @@
+@model Login//quando c'è la @ tutta la riga è in razor ovvero c#
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<link rel="stylesheet" href="~/css/login.css">
+<form method="post" action="Login">
+  
+  
+    <label for="txtEmail">Email:</label>
+    <input type="email" id="txtEmail" name="email" required />
+    <br />
+    <label for="txtPassword">Password:</label>
+    <input type="text" id="txtPassword" name="password" required />
+    <br />
+    <input type="submit" value="Login" />
+</form>
+
+
+
+

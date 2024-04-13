@@ -1,0 +1,71 @@
+@model IEnumerable<Registrazione>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Data)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cognome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sesso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ruolo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cognome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sesso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ruolo)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.RegistrazioneId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.RegistrazioneId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.RegistrazioneId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

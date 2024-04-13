@@ -1,0 +1,56 @@
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    padding: 50px 0;
+}
+
+.jumbotron {
+    background-color: #007bff;
+    color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+h1 {
+    color: #fff; /* Testo bianco */
+    font-size: 3.5rem; /* Dimensione del font aumentata */
+    font-weight: bold; /* Grassetto */
+    margin-bottom: 20px; /* Spaziatura dal basso */
+}
+
+h2 {
+    color: #333; /* Nero */
+    font-size: 2.5rem; /* Dimensione del font aumentata */
+    margin-bottom: 20px; /* Spaziatura dal basso */
+}
+
+p {
+    color: #333;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+img {
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.navbar-nav .nav-item .nav-link {
+    white-space: nowrap; /* Evita la divisione del testo */
+}

@@ -1,0 +1,36 @@
+@model List<Purchase>
+@{
+    ViewData["Title"] = "Cart";
+}
+
+<h1>@ViewData["Title"]</h1>
+<head>
+    <link rel="stylesheet" href="~/css/Cart.css">
+</head>
+<form method="post" action="RemoveFromCart">
+    @Html.AntiForgeryToken()
+    <table class="table">
+        <thead>
+            <tr>
+                <th>prodotto ordinato</th>
+                <th>quantita ordinata</th>
+                <th>prezzo</th>
+                <th>totale prezzo</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model)
+            {   
+                <tr>
+                    <td>@item.prodotto</td>
+                    <td>@item.quantita</td>
+                    <td>@item.prezzo</td>
+                    <td>@item.PrezzoTotale</td>
+                    <td>
+                        <input type="hidden" name="prodottoId" value="@item.PurchaseId" />
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>
